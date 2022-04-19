@@ -1,0 +1,29 @@
+a
+
+    í
+2b'  ã                   @   sè   U d dl mZmZmZ d dlZd dlZd dlmZ d dl	m
+Z
+ d dlZeƒ Z
+eed< ddgZe
+jeedd	gd	gd
+ ejj d¡Zg d¢Ze
+ d
+¡dd„ ƒZejdœdd„Ze
+ d¡edƒfedœdd„ƒZedkräeje
+ddd dS )é    )ÚFastAPIÚFileÚ
+UploadFileN)ÚBytesIO)ÚImageÚappzhttp://localhostzhttp://localhost:3000TÚ*)Z
+allow_originsZallow_credentialsZ
+allow_methodsZ
+allow_headersz../newmodels/2)zAcne and Rosacea Photosz
+Eczema Photosz"Nail Fungus and other Nail Diseasez*Warts Molluscum and other Viral Infectionsz/pingc                   Ã   s   dS )NZHi© r	   r	   r	   ú2C:\Users\DM\Desktop\FYP\models\apiiiiiii\.\main.pyÚping   s    r   )Úreturnc                 C   s   t  t t| ƒ¡¡}|S )N)ÚnpZarrayr   Úopenr   )ÚdataÚimager	   r	   r
+   Úread_file_as_image   s    r   z/predict.)Úfilec                 Ã   sV   t |  ¡ I d H ƒ}t |d¡}t |¡}tt |d ¡ }t |d ¡}|t	|ƒdœS )Nr   )ÚclassÚ
+confidence)
+r   Úreadr
+   Zexpand_dimsÚMODELÚpredictÚCLASS_NAMESZargmaxÚmaxÚfloat)r   r   Z	img_batchZpredictionsZpredicted_classr   r	   r	   r
+   r   $   s    
+þr   Ú__main__Ú	localhosti@  )ÚhostÚport)Zfastapir   r   r   ÚuvicornZnumpyr
+   Úior   ZPILr   Z
+tensorflowZtfr   Ú__annotations__ZoriginsZadd_middlewareZCORSMiddlewareZkerasÚmodelsZ
+load_modelr   r   Úgetr   Zndarrayr   Zpostr   Ú__name__Úrunr	   r	   r	   r
+   Ú<module>   s8   þû
+ÿÿ
